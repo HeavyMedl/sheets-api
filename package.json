@@ -1,0 +1,31 @@
+{
+  "name": "sheets-api",
+  "version": "1.0.0",
+  "description": "A Google Sheets API v4 implementation that abstracts authorization.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kurtlocker/sheets-api.git"
+  },
+  "keywords": [
+    "spreadsheets",
+    "google",
+    "Google Sheets",
+    "googleapis",
+    "sheets",
+    "api"
+  ],
+  "author": "kmedley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kurtlocker/sheets-api/issues"
+  },
+  "homepage": "https://github.com/kurtlocker/sheets-api#readme",
+  "dependencies": {
+    "google-authorize": "^1.0.1",
+    "googleapis": "^16.0.0"
+  }
+}
