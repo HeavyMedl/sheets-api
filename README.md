@@ -14,10 +14,12 @@ npm i sheets-api --save
 ```
 ```javascript
 // sheets-client.js
+const SheetsAPI = require('sheets-api');
 const sheets = new SheetsAPI();
 
+// ValueRange(https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values#ValueRange)
 let payload = {
-  spreadsheetId: "19uTpwB-PM9TtUGUCRMfgWdkH0pqEHVq3J6sjzCNoMRM",
+  spreadsheetId: "19uTpwB-PM9TtUGUCRMdgWdkH0pqEHVv3J6sjzCNoMRM",
   range: "Costco Prices!A1:D1",
   valueInputOption: 'USER_ENTERED',
   resource : {
@@ -42,3 +44,5 @@ sheets
   // Derp
   .catch(e => console.error(e))
 ```
+
+![Zoolander - Its so simple](https://media1.popsugar-assets.com/files/thumbor/wRBrd3h8BVpYgTwfyN7qQAdetH8/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2015/12/08/794/n/1922507/a569f539a7000020_4._orig-13571431/i/Simplify.gif)
