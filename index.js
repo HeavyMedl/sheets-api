@@ -30,27 +30,53 @@ class SheetsAPI extends GoogleAuthorize {
     return super.authorize()
   }
   /**
-   * Collection: spreadsheets.values
-   * https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values
-   * This function corresponds with the append method of the values collection
-   * of the Sheets API.
-   * @param  {string} method  The name of the method from the
-   *                          spreadsheets.values collection
+   * A generic wrapper to distinguish what collection from the Sheets API
+   * we want.
+   * @param  {object} collection The collection from the sheets API we want.
+   * @param  {string} method  The name of the method from the corresponding
+   *                          collection.
    * @param  {google.auth.OAuth2} auth  The OAuth2 authorized client
    * @param  {object} payload The object to pass to the request to the API
    * @return {Promise}        The chainable Promise that resolves the response
    *                          from the request to the API and the
    *                          {google.auth.OAuth2} for additional work.
    */
-  values(method, auth, payload) {
+  _collection(collection, method, auth, payload) {
     if (!payload.auth) payload.auth = auth;
     return new Promise((resolve, reject) => {
-      this.sheets.spreadsheets.values[method](payload, (err, resp) => {
+      collection[method](payload, (err, resp) => {
           if (err) reject(err);
           resolve(auth, resp);
         }
       );
     });
   }
+  /**
+   * Collection: spreadsheets
+   * https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets
+   * This function corresponds the spreadsheets collection of the Sheets API.
+   * See _collection for param definitions.
+   */
+   spreadsheets(method, auth, payload) {
+     this._collection(this.sheets.spreadsheets, method, auth, payload)
+   }
+  /**
+   * Collection: spreadsheets.sheets
+   * https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.sheets
+   * This function corresponds the sheets collection of the Sheets API.
+   * See _collection for param definitions.
+   */
+   sheets(method, auth, payload) {
+     this._collection(this.sheets.spreadsheets.sheets, method, auth, payload)
+   }
+   /**
+    * Collection: spreadsheets.values
+    * https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values
+    * This function corresponds the values collection of the Sheets API.
+    * See _collection for param definitions.
+    */
+    values(method, auth, payload) {
+      this._collection(this.sheets.spreadsheets.values, method, auth, payload)
+    }
 }
 module.exports = SheetsAPI;
