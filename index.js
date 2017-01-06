@@ -58,7 +58,7 @@ class SheetsAPI extends GoogleAuthorize {
    * See _collection for param definitions.
    */
    spreadsheets(method, auth, payload) {
-     this._collection(this.sheets.spreadsheets, method, auth, payload)
+     return this._collection(this.sheets.spreadsheets, method, auth, payload)
    }
   /**
    * Collection: spreadsheets.sheets
@@ -67,7 +67,7 @@ class SheetsAPI extends GoogleAuthorize {
    * See _collection for param definitions.
    */
    sheets(method, auth, payload) {
-     this._collection(this.sheets.spreadsheets.sheets, method, auth, payload)
+     return this._collection(this.sheets.spreadsheets.sheets, method, auth, payload)
    }
    /**
     * Collection: spreadsheets.values
@@ -76,7 +76,7 @@ class SheetsAPI extends GoogleAuthorize {
     * See _collection for param definitions.
     */
     values(method, auth, payload) {
-      this._collection(this.sheets.spreadsheets.values, method, auth, payload)
+      return this._collection(this.sheets.spreadsheets.values, method, auth, payload)
     }
 }
 module.exports = SheetsAPI;

@@ -49,8 +49,11 @@ sheets
 
 ##Change Log
 
+### 1.0.2 - Jan 5, 2017
+Fixed not returning promises from collection methods.
+
 ### 1.0.1 - Jan 5, 2017
-Added other collection helper methods (spreadsheets.sheets, spreadsheets)
+Added other collection helper methods (spreadsheets.sheets, spreadsheets).
 
 ### 1.0.0 - Jan 4, 2017
-Initial publish
+Initial publish.
