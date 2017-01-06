@@ -46,3 +46,11 @@ sheets
 ```
 
 ![Zoolander - Its so simple](https://cdn.meme.am/cache/instances/folder28/500x/65581028.jpg)
+
+##Change Log
+
+### 1.0.1 - Jan 5, 2017
+Added other collection helper methods (spreadsheets.sheets, spreadsheets)
+
+### 1.0.0 - Jan 4, 2017
+Initial publish
