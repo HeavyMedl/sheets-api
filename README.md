@@ -62,6 +62,9 @@ sheets
 
 ##Change Log
 
+### 1.0.5 - Jan 8, 2017
+Fixing typo where response was undefined.
+
 ### 1.0.4 - Jan 8, 2017
 Publishing README.md to NPM.
 
