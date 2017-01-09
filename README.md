@@ -35,12 +35,12 @@ let payload = {
 sheets
   // Get me an authorized OAuth2 client thats ready to make requests.
   .authorize()
-  
+
   // https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append
   // Using the spreadsheets.values collection, use the 'append' method to
   // append data (payload) to a spreadsheet.
   .then(auth => sheets.values('append', auth, payload))
-  
+
   // 'response' is an object that contains the response from the request to the
   // API (append) and the OAuth2 client to be chained further. It looks like this:
   // {auth:auth, response:response}
@@ -48,12 +48,12 @@ sheets
     spreadsheetId: SPREADSHEET_ID,
     range: 'Orders!A1:D1'
   }))
-  
+
   // The results of the request to spreadsheets.values.get collection.
   .then(response => {
     console.log(response.response);
   })
-  
+
   // Derp
   .catch(e => console.error(e))
 ```
@@ -62,8 +62,11 @@ sheets
 
 ##Change Log
 
+### 1.0.4 - Jan 8, 2017
+Publishing README.md to NPM.
+
 ### 1.0.3 - Jan 8, 2017
-Fixed _collections not correctly resolving the response from sheets api. Promise.resolve takes a single object. You can't simply pass n arguments to it. It has single arity.
+Fixed fn#collections not correctly resolving the response from sheets api. Promise.resolve takes a single object. You can't simply pass n arguments to it. It has single arity.
 
 ### 1.0.2 - Jan 5, 2017
 Fixed not returning promises from collection methods.

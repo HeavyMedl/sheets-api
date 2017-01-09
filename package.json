@@ -1,6 +1,6 @@
 {
   "name": "sheets-api",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Google Sheets API v4 implementation that abstracts authorization.",
   "main": "index.js",
   "scripts": {
