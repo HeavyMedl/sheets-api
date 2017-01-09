@@ -16,10 +16,11 @@ npm i sheets-api --save
 // sheets-client.js
 const SheetsAPI = require('sheets-api');
 const sheets = new SheetsAPI();
+const SPREADSHEET_ID = "19uTpwB-PM9TtUGUCRMdgWdkH0pqEHVv3J6sjzCNoMRM";
 
 // ValueRange(https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values#ValueRange)
 let payload = {
-  spreadsheetId: "19uTpwB-PM9TtUGUCRMdgWdkH0pqEHVv3J6sjzCNoMRM",
+  spreadsheetId: SPREADSHEET_ID,
   range: "Orders!A1:D1",
   valueInputOption: 'USER_ENTERED',
   resource : {
@@ -34,13 +35,25 @@ let payload = {
 sheets
   // Get me an authorized OAuth2 client thats ready to make requests.
   .authorize()
+  
   // https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append
   // Using the spreadsheets.values collection, use the 'append' method to
   // append data (payload) to a spreadsheet.
   .then(auth => sheets.values('append', auth, payload))
-  // Oh I'm not done. Need to append again. Should I do anything using the
-  // response from the first request? Naw.. I'm good.
-  .then((auth, resp) => sheets.values('append', auth, payload))
+  
+  // 'response' is an object that contains the response from the request to the
+  // API (append) and the OAuth2 client to be chained further. It looks like this:
+  // {auth:auth, response:response}
+  .then(response => sheets.values('get', response.auth, {
+    spreadsheetId: SPREADSHEET_ID,
+    range: 'Orders!A1:D1'
+  }))
+  
+  // The results of the request to spreadsheets.values.get collection.
+  .then(response => {
+    console.log(response.response);
+  })
+  
   // Derp
   .catch(e => console.error(e))
 ```
@@ -48,6 +61,9 @@ sheets
 ![Zoolander - Its so simple](https://cdn.meme.am/cache/instances/folder28/500x/65581028.jpg)
 
 ##Change Log
+
+### 1.0.3 - Jan 8, 2017
+Fixed _collections not correctly resolving the response from sheets api. Promise.resolve takes a single object. You can't simply pass n arguments to it. It has single arity.
 
 ### 1.0.2 - Jan 5, 2017
 Fixed not returning promises from collection methods.
