@@ -45,10 +45,9 @@ class SheetsAPI extends GoogleAuthorize {
     if (!payload.auth) payload.auth = auth;
     return new Promise((resolve, reject) => {
       collection[method](payload, (err, resp) => {
-          if (err) reject(err);
-          resolve(auth, resp);
-        }
-      );
+        if (err) reject(err);
+        resolve({auth: auth, response: response});
+      });
     });
   }
   /**
