@@ -24,14 +24,16 @@ class SheetsAPI extends GoogleAuthorize {
    * Returns a Promise returned from GoogleAuthorize.authorize that
    * resolves the OAuth2 client that is used to make authorized requests
    * to the Sheets API.
+   *
    * @return {Promise} The promise that resolves the OAuth2 client (auth)
    */
   authorize() {
-    return super.authorize()
+    return super.authorize();
   }
   /**
    * A generic wrapper to distinguish what collection from the Sheets API
    * we want.
+   *
    * @param  {object} collection The collection from the sheets API we want.
    * @param  {string} method  The name of the method from the corresponding
    *                          collection.
@@ -46,7 +48,10 @@ class SheetsAPI extends GoogleAuthorize {
     return new Promise((resolve, reject) => {
       collection[method](payload, (err, response) => {
         if (err) reject(err);
-        resolve({auth: auth, response: response});
+        resolve({
+          auth: auth,
+          response: response,
+        });
       });
     });
   }
@@ -55,27 +60,50 @@ class SheetsAPI extends GoogleAuthorize {
    * https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets
    * This function corresponds the spreadsheets collection of the Sheets API.
    * See _collection for param definitions.
+   *
+   * @param {String} method
+   * @param {google.auth.OAuth2} auth
+   * @param {Object} payload
+   * @return {Promise}
+   * @memberof SheetsAPI
    */
-   spreadsheets(method, auth, payload) {
-     return this._collection(this.sheets.spreadsheets, method, auth, payload)
-   }
+  spreadsheets(method, auth, payload) {
+    return this._collection(this.sheets.spreadsheets, method, auth, payload);
+  }
+  /**
+
+   */
   /**
    * Collection: spreadsheets.sheets
-   * https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.sheets
+   * //developers.google.com/sheets/api/reference/rest/v4/spreadsheets.sheets
    * This function corresponds the sheets collection of the Sheets API.
    * See _collection for param definitions.
+   *
+   * @param {String} method
+   * @param {google.auth.OAuth2} auth
+   * @param {Object} payload
+   * @return {Promise}
+   * @memberof SheetsAPI
    */
-   sheets(method, auth, payload) {
-     return this._collection(this.sheets.spreadsheets.sheets, method, auth, payload)
-   }
-   /**
-    * Collection: spreadsheets.values
-    * https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values
-    * This function corresponds the values collection of the Sheets API.
-    * See _collection for param definitions.
-    */
-    values(method, auth, payload) {
-      return this._collection(this.sheets.spreadsheets.values, method, auth, payload)
-    }
+  sheets(method, auth, payload) {
+    return this._collection(
+        this.sheets.spreadsheets.sheets, method, auth, payload);
+  }
+  /**
+   * Collection: spreadsheets.values
+   * //developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values
+   * This function corresponds the values collection of the Sheets API.
+   * See _collection for param definitions.
+   *
+   * @param {String} method
+   * @param {google.auth.OAuth2} auth
+   * @param {Object} payload
+   * @return {Promise}
+   * @memberof SheetsAPI
+   */
+  values(method, auth, payload) {
+    return this._collection(
+        this.sheets.spreadsheets.values, method, auth, payload);
+  }
 }
 module.exports = SheetsAPI;
