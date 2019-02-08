@@ -1,6 +1,6 @@
 {
   "name": "sheets-api",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A Google Sheets API v4 implementation that abstracts authorization.",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/kurtlocker/sheets-api#readme",
   "dependencies": {
-    "google-authorize": "^1.0.3",
+    "google-authorize": "^1.0.4",
     "googleapis": "^16.0.0"
   }
 }

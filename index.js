@@ -15,9 +15,14 @@ class SheetsAPI extends GoogleAuthorize {
    * this class to 'spreadsheets'
    * (See https://developers.google.com/identity/protocols/googlescopes). To
    * obtain the authorized OAuth2 client, call 'authorize'.
+   *
+   * @param {String} credentialsPath The absolute path to the
+   *  Google credentials.json file. Defaults to 'credentials.json' in
+   *  GoogleAuthorize
+   *
    */
-  constructor() {
-    super(['spreadsheets']);
+  constructor(credentialsPath) {
+    super(['spreadsheets'], credentialsPath);
     this.sheets = googleapis.sheets('v4');
   }
   /**
