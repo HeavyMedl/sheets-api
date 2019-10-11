@@ -7,7 +7,7 @@ A Google Sheets API v4 implementation that abstracts the authorization portion o
 
 Here's how to use it:
 
-Visit [Node quickstart](https://developers.google.com/sheets/api/quickstart/nodejs) and complete Step 1 to get your client_secret.json.
+Visit [Node quickstart](https://developers.google.com/sheets/api/quickstart/nodejs) and complete Step 1 to get your `credentials.json`.
 
 ```bash
 npm i sheets-api --save
@@ -58,9 +58,15 @@ sheets
   .catch(e => console.error(e))
 ```
 
-![Zoolander - Its so simple](https://cdn.meme.am/cache/instances/folder28/500x/65581028.jpg)
+## Change Log
 
-##Change Log
+### 1.0.8 - Feb 7, 2019
+
+Added the credentialsPath to path to GoogleAuthorize so you can choose where youd like to store credentials.json. For example:
+
+```javascript
+const sheets = new SheetsAPI('path/to/credentials.json');
+```
 
 ### 1.0.5 - Jan 8, 2017
 Fixing typo where response was undefined.
