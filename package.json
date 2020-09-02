@@ -26,6 +26,6 @@
   "homepage": "https://github.com/kurtlocker/sheets-api#readme",
   "dependencies": {
     "google-authorize": "^1.0.4",
-    "googleapis": "^16.0.0"
+    "googleapis": "^39.1.0"
   }
 }
